@@ -1,0 +1,2 @@
+module HighschoolpostsHelper
+end

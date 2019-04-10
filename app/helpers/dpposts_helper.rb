@@ -1,0 +1,2 @@
+module DppostsHelper
+end

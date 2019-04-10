@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+<!--
+/***************************************************************************************
+*    Title: Active Storage For Multiple Images | Validate & Resize | Ruby on Rails 5.2 source code
+*    Author: Deanin
+*    Date: June 3 2018
+*    Code version: Unknown
+*    Availability: https://www.youtube.com/watch?v=A23zCePXe74&t=649s
+* 
+***************************************************************************************/
+-->
+<!-- image tags for multiple images -->
+<% (0...@post.images.count).each do |image| %>
+<div style="width:300px, height:300px;">
+	<%= image_tag(@post.images[image], style:'width:20%; height:auto') %>
+</div>
+<% end %>
+<!-- file tag for one file -->
+<%= link_to 'Download', @post.file %>
+<p>
+  <strong>Body:</strong>
+  <%= @post.body %>
+</p>
+<!-- if admin is logged in, they will be able to edit, otherwise
+	prospective students will not be able to see the edit option -->
+<% if current_user %>
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<% end %>
+<%= link_to 'Back', posts_path %>

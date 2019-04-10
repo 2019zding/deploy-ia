@@ -1,0 +1,51 @@
+<!--
+/***************************************************************************************
+*    Title: Ruby on Rails 5 Beginner's Tutorial - 15-A Authorization and Sessions source code
+*    Author: BarbieTechFabulous
+*    Date: March 9th 2018
+*    Code version: Unknown
+*    Availability: https://www.youtube.com/watch?v=I7RCZ6f5l0g
+*
+***************************************************************************************/
+-->
+<!-- everything is inside a div class so that the page will be modeled in a certain way-->
+<div class="row" style="padding-top:0%;">
+	<div class="col"></div>
+	<div class="col-md-4">
+		<!-- title -->
+		<h1>Create an Account!</h1>
+		<!-- form for users -->
+		<%= form_for @user do |f| %>
+		<!-- conditional for errors if they happen, the message below will show up
+		For example: if an admin tries to create a new account with an email
+		that was already used to create an account, this error message will pop
+		up and prohibit the program from saving this new account -->
+		<% if @user.errors.any? %>
+		<div id="error_explanation">
+			<h2> 
+				<%= pluralize(@user.errors.count, "error") %>
+				prohibited this article from being saved:
+			</h2>
+			<p>
+				<ul>
+					<% @user.errors.full_messages.each do |msg| %>
+					<li>
+						<%= msg %>
+					</li>
+				<% end %>
+				</ul>
+			</p>
+			<!-- if there is alert, this code will execute alert, and then end -->
+			<% if alert %>
+			<%= alert %>
+			<% end %>
+		</div>
+		<% end %> <!-- end for checking errors -->
+		<!-- various fields for entering user information when creating a new account -->
+		<%= f.text_field :userid, placeholder: 'Input a User ID', class:'form-control' %>
+		<%= f.email_field :email, placeholder: 'Input your email', class:'form-control' %>
+		<%= f.password_field :password, placeholder: 'Create a password ', class:'form-control' %>
+		<%= f.password_field :password_confirmation, placeholder: 'Confirm Password', class:'form-control' %>
+		<%= f.submit 'Create Account' %>
+		<% end %>
+	</div>

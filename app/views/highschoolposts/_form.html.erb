@@ -1,0 +1,39 @@
+<!-- error message -->
+<%= form_with(model: highschoolpost, local: true) do |form| %>
+  <% if highschoolpost.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(highschoolpost.errors.count, "error") %> prohibited this highschoolpost from being saved:</h2>
+
+      <ul>
+      <% highschoolpost.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!-- fields for creating new content -->
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :images, multiple: true%>
+  </div>
+
+  <div class="field">
+    <%= form.label :file %>
+    <%= form.file_field :file%>
+  </div>
+  
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

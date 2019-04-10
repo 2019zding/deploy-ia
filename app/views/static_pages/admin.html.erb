@@ -1,0 +1,44 @@
+<!-- <h1>StaticPages#admin</h1>
+<p>Find me in app/views/static_pages/admin.html.erb</p>
+-->
+<!-- everything is inside a class so that the page will be modeled in a certain way-->
+<section class="navigation">
+  <div class="nav-container">
+    <div class="brand">
+    </div>
+    <nav>
+      <div class="nav-mobile">
+        <a id="nav-toggle" href="#!"><span></span></a>
+      </div>
+      <ul class="nav-list">
+        <!-- Setting the links to #! will ensure that no action takes place on click. -->
+        <!-- navbar -->
+        <li><a href="/#home">Home</a></li>
+        <li><a href="/middleSchool">Middle School</a></li>
+        <li><a href="/highSchool">High School</a></li>
+        <li><a href="#admin">Administration Login</a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
+<!-- title -->
+<br><h6> Administration</h6></br>
+<!-- link to Create Account for new users -->
+<%= link_to 'Create Account', new_user_path %>
+<!-- this is a condition statement for admins that 
+  are currently signed in and sessions is running, if admin 
+  wants to sign out, they can sign out-->
+<% if current_user %>
+	<%= link_to 'Sign Out', session_path('active'), method: :delete %>
+	Welcome, <%= current_user.userid %>
+  <!-- otherwise if admin is not signed in, they can sign in
+    and start sessions -->
+	<% else %>
+	<%= link_to 'Sign In', new_session_path %>
+	<% end %>
+
+
+<!-- footer -->
+<div id="footer">
+2019 Copyright © 
+</div>
